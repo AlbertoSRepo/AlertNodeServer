@@ -4,7 +4,12 @@ const socketIo = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+        origin: "*", // Permette a qualsiasi dominio di connettersi
+        methods: ["GET", "POST"] // Metodi HTTP permessi
+    }
+});
 
 io.on('connection', (socket) => {
     console.log('Un client si è connesso');
