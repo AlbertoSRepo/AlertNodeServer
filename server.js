@@ -13,14 +13,13 @@ const io = socketIo(server, {
 
 io.on('connection', (socket) => {
     console.log('Un client si è connesso');
-    
-    setInterval(() => {
-        socket.emit('messaggio', 'Ciao dal server!');
-    }, 60000); // invia un messaggio ogni 60 secondi
+
+    socket.on('invia_messaggio', (messaggio) => {
+        io.emit('messaggio', messaggio); // Inoltra il messaggio a tutti i client connessi
+    });
 });
 
 server.listen(3000, () => {
     console.log('Server in ascolto sulla porta 3000');
 });
-
 
