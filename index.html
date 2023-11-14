@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Socket.io Test</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io.connect('http://52.211.3.104:3000');
+
+            socket.on('messaggio', function (data) {
+                console.log(data);
+                // Puoi aggiungere il messaggio al DOM se necessario
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Socket.io Test</h1>
+    <p>Apri la console del browser per vedere i messaggi.</p>
+</body>
+</html>
